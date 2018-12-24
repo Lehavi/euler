@@ -18,5 +18,25 @@ def ep2 (max):
         prev = pf
     return total
 
+
+def ep3 (max):
+    # build a list of primes
+    primes = [2]
+    i = 3   # to skip even numbers
+    while i < max/2:  # past /2 won't be a factor
+        notp = 0
+        for j in primes:
+            if i % j == 0:
+                notp = 1
+                break
+        if notp == 0: primes.append(i)
+        i += 2
+
+    # find the largest prime factor of max
+    for i in reversed(primes):
+        if max % i == 0:
+            return i
+
 print "ep1:", ep1(10)
 print "ep2:", ep2(4*1000*1000)
+print "ep3:", ep3(600809)
